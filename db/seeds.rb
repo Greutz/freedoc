@@ -5,19 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+DatabaseCleaner.clean_with(:truncation, :only => %w[doctors])
+
 doctors = []
 patients = []
 speciality = []
+city = []
 10.times do
-  City.create(name: )
+  city << City.create(name: Faker::Address.city)
 end
-
+puts "10 villes de créées !"
 10.times do
   patients << Patient.create(first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name)
 end
 puts "10 patients de créés !"
 10.times do
-  doctors << Doctor.create(first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, zip_code: Faker::Address.zip_code)
+  doctors << Doctor.create(first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, zip_code: Faker::Address.zip_code, city: city.sample)
 end
 puts "10 docteurs de créés !"
 10.times do
