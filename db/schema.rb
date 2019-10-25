@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_10_25_063728) do
     t.datetime "date"
     t.integer "doctor_id"
     t.integer "patient_id"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "city_id"
     t.index ["city_id"], name: "index_appointements_on_city_id"
     t.index ["doctor_id"], name: "index_appointements_on_doctor_id"
     t.index ["patient_id"], name: "index_appointements_on_patient_id"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2019_10_25_063728) do
     t.string "first_name"
     t.string "last_name"
     t.string "zip_code"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "city_id"
     t.index ["city_id"], name: "index_doctors_on_city_id"
   end
 
@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 2019_10_25_063728) do
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_patients_on_city_id"
   end
 
   create_table "specialities", force: :cascade do |t|
